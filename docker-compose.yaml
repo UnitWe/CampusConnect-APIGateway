@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+
+  app:
+    build: .
+    entrypoint: ./.docker/entrypoint.sh
+    container_name: campusconnect-api-gateway
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    env_file:
+      - ./.env
+    extra_hosts:
+      - "host.docker.internal:172.17.0.1"
+      - "localhost:172.17.0.1"
